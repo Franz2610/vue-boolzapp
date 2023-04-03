@@ -44,7 +44,8 @@
 }
 
 .chatBarBox:hover {
-    background-color: grey ;
+    background-color: lightslategrey;
+    border: 1px solid black;
 }
 
 i {
@@ -52,19 +53,26 @@ i {
 }
 #chat{
     background-image: url("../img/mine.jpg");
-    height: calc(100% -150px);
+    height: 100%;
     overflow-y: scroll;
 }
-
-#sent{
-    width: 200px;
-    height: 50px;
-    background-color: #d5f9ba;
-    
+#chat .messageFor i{
+    color: blue;
 }
-
-#received{
-    width: 200px;
-    height: 50px;
-    background-color: #ffffff;
+.received{
+    background-color:  #edf3fa;
+    border-radius: 15px;
+    padding: 5px;
+    align-self: flex-start;
+}
+.sent{
+    background-color:  #aceb9e;
+    border-radius: 15px;
+    padding: 5px;
+    align-self: flex-end;
+}
+.inputBar{
+   margin-top: 430px;
+   display: block;
+   z-index: 100000;
 }
