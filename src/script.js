@@ -413,7 +413,10 @@ createApp({
             return dateTime;
         },
         newText(){
-            if (this.newMess != ''){
+            if (this.newMess == ' ') {
+                return alert('Devi scrivere un mess');
+            }
+            if (this.newMess !=" "){
                 let hours = new Date().getHours();
                 let minutes = new Date().getMinutes();
                 const newMessage = {
