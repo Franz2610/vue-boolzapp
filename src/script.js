@@ -385,4 +385,5 @@ createApp({
         selectChat(index){
             this.activeIndex = index;
         }
+    }
 }).mount('#app');
