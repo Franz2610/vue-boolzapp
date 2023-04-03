@@ -414,7 +414,7 @@ createApp({
         },
         newText(){
             if (this.newMess == ' ') {
-                return alert('Devi scrivere un mess');
+                return alert('Prima di premere invio, scrivi.');
             }
             if (this.newMess !=" "){
                 let hours = new Date().getHours();
@@ -426,7 +426,26 @@ createApp({
                 }
                 this.contacts[this.activeIndex].messages.push(newMessage);
                 this.newMess = '';
+                const botMess = {
+                    date: hours + ":" + minutes,
+                    message: 'ok',
+                    status: 'sent'
+                }
+                this.contacts[this.activeIndex].messages.push(botMess);
             }
         },
+        filterChat(){
+                
+            if (this.searchChat === ''){
+                this.filteredChat = this.contacts;
+            } else {
+                this.filteredChat = this.contacts.filter(contact => {
+                    if (contact.name.toLowerCase().includes(this.searchChat.toLowerCase()) || contact.messages.some(text => text.message.toLowerCase().includes(this.searchChat.toLowerCase()))) {
+                    return true;
+                    }      
+            })
+        }
+    },
     }
+
 }).mount('#app');
