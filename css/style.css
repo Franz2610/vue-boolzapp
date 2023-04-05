@@ -39,8 +39,9 @@
 }
 .chatBarBox{
     height: 80px;
+    
     cursor: pointer;
-    padding: .3rem 1rem;
+    padding: 1rem 1rem;
 }
 
 .chatBarBox:hover {
@@ -76,3 +77,24 @@ i {
    display: block;
    z-index: 100000;
 }
+.contactNameMess{
+   align-items: ;
+   width: 200px;
+   overflow-y: auto;
+}
+.messDate{
+    width: 20px;
+    align-items: end;
+}
+.myEmoji{
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+}
+.icons{
+    position: relative;
+}
+.message-destroy, .fa-check-double{
+    cursor: pointer;
+}
+

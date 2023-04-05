@@ -222,9 +222,10 @@ B) aggiungere quindi un'icona con una freccia verso sinistra per tornare indietr
 
 
 
-
 const dt = luxon.DateTime;
 const {createApp} = Vue;
+import Picker from './emoji-picker.js';
+
 
 createApp({
     data(){
@@ -402,7 +403,12 @@ createApp({
             ],
             activeIndex: 0,
             searchContactText: '',   
-            newMess:''     
+            newMess:'',
+            showEmoji : false,
+            messageActive: {
+                index: false,
+                show: false
+            }
         }
     },
     methods: {
@@ -437,13 +443,29 @@ createApp({
             };
         }, 
         searchContacts(){
-            this.contacts.forEach((element) =>{
-                if(element.name.toLowerCase().includes(this.searchContactText.toLowerCase())){
-                    element.visible = true;
+            this.contacts.forEach((contact) =>{
+                if(contact.name.toLowerCase().includes(this.searchContactText.toLowerCase())){
+                    contact.visible = true;
                 } else{
-                    element.visible = false;
+                    contact.visible = false;
                 }
             })
         },
+        onSelectEmoji(emoji){
+            this.newMess += emoji.i;
+        },
+        deleteMessage(index){
+            this.contacts[this.activeIndex].messages.splice(index, 1);
+        },
+        showOption(index){
+            if(this.messageActive.index !== false && this.messageActive.index !== index){
+                this.messageActive.show = false;
+                this.messageActive.index = false;
+            }
+            this.messageActive.show = (this.messageActive.show) ? false : true;
+            this.messageActive.index = index;
+
+        }
     },
-}).mount('#app');
+    
+}).component('Picker', Picker).mount('#app');
