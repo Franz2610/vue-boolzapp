@@ -48,7 +48,7 @@
                         </div>
                         <div id="chatBar">
                             <ul>
-                                <li class="chatBarBox d-flex" v-for="(contact, index) in contacts" :class="(index === contactActive) ? ' contact active' : 'contact'" :key="index" @click="selectChat(index)" v-show="contact.visible" >
+                                <li class="chatBarBox d-flex" v-for="(contact, index) in contacts" :key="index" @click="selectChat(index)" >
                                     <img class="Myprofile" :src="contact.avatar" :alt="contact.name">
                                         <div class="d-flex justify-content-between">
                                             <div class="flex-start flex-wrap">
