@@ -223,8 +223,8 @@ B) aggiungere quindi un'icona con una freccia verso sinistra per tornare indietr
 
 
 
-const {createApp} = Vue;
 const dt = luxon.DateTime;
+const {createApp} = Vue;
 
 createApp({
     data(){
@@ -400,7 +400,9 @@ createApp({
                     ],
                 }
             ],
-            activeIndex: 0
+            activeIndex: 0,
+            searchContactText: '',   
+            newMess:''     
         }
     },
     methods: {
@@ -413,10 +415,10 @@ createApp({
             return dateTime;
         },
         newText(){
-            if (this.newMess == ' ') {
+            if (this.newMess == '') {
                 return alert('Prima di premere invio, scrivi.');
-            }
-            if (this.newMess !=" "){
+            };
+            if (this.newMess !=""){
                 let hours = new Date().getHours();
                 let minutes = new Date().getMinutes();
                 const newMessage = {
@@ -432,20 +434,16 @@ createApp({
                     status: 'sent'
                 }
                 this.contacts[this.activeIndex].messages.push(botMess);
-            }
-        },
-        filterChat(){
-                
-            if (this.searchChat === ''){
-                this.filteredChat = this.contacts;
-            } else {
-                this.filteredChat = this.contacts.filter(contact => {
-                    if (contact.name.toLowerCase().includes(this.searchChat.toLowerCase()) || contact.messages.some(text => text.message.toLowerCase().includes(this.searchChat.toLowerCase()))) {
-                    return true;
-                    }      
+            };
+        }, 
+        searchContacts(){
+            this.contacts.forEach((element) =>{
+                if(element.name.toLowerCase().includes(this.searchContactText.toLowerCase())){
+                    element.visible = true;
+                } else{
+                    element.visible = false;
+                }
             })
-        }
+        },
     },
-    }
-
 }).mount('#app');
